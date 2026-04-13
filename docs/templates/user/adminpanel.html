@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/adminpanel.css}" />
+</head>
+<body>
+<div class="content" layout:fragment="content">
+
+    <h2 class="admin-title">Gestión de Usuarios</h2>
+
+    <table class="admin-table user-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre y Apellidos</th>
+            <th>Usuario</th>
+            <th>Género</th>
+            <th>Roles</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="@{${user.getName()} + ' ' + ${user.getFullLastName()}}">Juan Pérez</td>
+            <td th:text="${user.getUsername()}">juanp</td>
+            <td th:text="${user.getMusicGenre()}">Rock</td>
+            <td>
+                <span th:each="rol : ${user.getRoles()}" th:text="@{${rol.getName()} + ', '}"></span>
+            </td>
+            <td class="table-actions">
+                <button class="btn-edit" ><a class="btn-edit__link" th:href="@{'/users/' + ${user.getId()} + '/edit'}">Editar</a></button>
+                <button class="btn-delete"><a class="btn-delete__link" th:href="@{'/users/' + ${user.getId()} + '/delete'}">Eliminar</a></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

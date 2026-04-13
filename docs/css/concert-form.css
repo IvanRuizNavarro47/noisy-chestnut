@@ -1,0 +1,207 @@
+.content {
+  padding: 40px 20px;
+  width: 100%;
+}
+@media (max-width: 992px) {
+  .content {
+    padding-left: 90px;
+  }
+}
+@media (max-width: 600px) {
+  .content {
+    padding: 20px 10px 20px 80px;
+  }
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #f1f1f1;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #0b0b0f;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+.btn-back:hover {
+  background-color: #7a0c20;
+}
+
+.concert-form-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  background-color: #0b0b0f;
+  color: #f1f1f1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.concert-form-card__header {
+  background-color: #b3122d;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.concert-form-card__body {
+  padding: 30px 25px;
+}
+.concert-form-card__grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+@media (max-width: 600px) {
+  .concert-form-card__grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+.concert-form-card__section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #2a2a33;
+  padding-bottom: 15px;
+}
+.concert-form-card__section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.concert-form-card__section-title {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.concert-form-card__field {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.concert-form-card__field label {
+  margin-bottom: 5px;
+}
+.concert-form-card__field input,
+.concert-form-card__field textarea,
+.concert-form-card__field select {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(30.4838709677, 30.4838709677, 37.0161290323);
+  color: #f1f1f1;
+  width: 100%;
+}
+.concert-form-card__field input:focus,
+.concert-form-card__field textarea:focus,
+.concert-form-card__field select:focus {
+  outline: 1px solid #b3122d;
+}
+.concert-form-card__field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.concert-form-card__field input[type=file] {
+  padding: 10px 0;
+}
+.concert-form-card__field input[type=file]::-webkit-file-upload-button {
+  background-color: #2a2a33;
+  color: #f1f1f1;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.concert-form-card__field input[type=file]::-webkit-file-upload-button:hover {
+  background-color: rgb(18.9677419355, 18.9677419355, 23.0322580645);
+}
+.concert-form-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+@media (max-width: 600px) {
+  .concert-form-card__actions {
+    flex-direction: column;
+  }
+}
+.concert-form-card__button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+@media (max-width: 600px) {
+  .concert-form-card__button {
+    width: 100%;
+  }
+}
+.concert-form-card__button--cancel {
+  background-color: #2a2a33;
+  color: #f1f1f1;
+}
+.concert-form-card__button--cancel:hover {
+  background-color: rgb(18.9677419355, 18.9677419355, 23.0322580645);
+}
+.concert-form-card__button--save {
+  background-color: #b3122d;
+  color: #f1f1f1;
+}
+.concert-form-card__button--save:hover {
+  background-color: #7a0c20;
+}
+
+.chosen-container {
+  width: 100% !important;
+}
+.chosen-container .chosen-choices {
+  background-color: rgb(30.4838709677, 30.4838709677, 37.0161290323) !important;
+  border: none !important;
+  border-radius: 6px !important;
+}
+.chosen-container .chosen-choices li.search-choice {
+  background-color: #b3122d !important;
+  background-image: none !important;
+  color: #f1f1f1 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.chosen-container .chosen-drop {
+  background-color: rgb(30.4838709677, 30.4838709677, 37.0161290323) !important;
+  border: 1px solid #2a2a33 !important;
+}
+.chosen-container .chosen-drop .chosen-results li.highlighted {
+  background-color: #b3122d !important;
+  background-image: none !important;
+}
+
+.current-image {
+  margin-top: 10px;
+  background-color: rgba(42, 42, 51, 0.3);
+  border-radius: 6px;
+  padding: 10px;
+}
+.current-image img {
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .concert-form-card {
+    border-radius: 8px;
+  }
+  .concert-form-card__header {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+  .concert-form-card__body {
+    padding: 20px 15px;
+  }
+  .concert-form-card__field input, .concert-form-card__field textarea, .concert-form-card__field select {
+    padding: 8px;
+  }
+}
+
+/*# sourceMappingURL=concert-form.css.map */

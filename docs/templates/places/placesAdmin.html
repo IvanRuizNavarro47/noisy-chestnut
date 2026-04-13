@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Places admin</title>
+  <link rel="stylesheet" th:href="@{/css/placesAdmin.css}" />
+</head>
+<body>
+<div class="content" layout:fragment="content">
+
+  <h2 class="admin-title">Gestión de Salas</h2>
+
+  <table class="admin-table places-table">
+    <thead>
+    <tr>
+      <th class="col-id">ID</th>
+      <th>Nombre</th>
+      <th class="col-address">Dirección</th>
+      <th class="col-capacity">Capacidad</th>
+      <th class="col-rating">Valoración</th>
+      <th class="col-owner">Propietario</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="place : ${places}">
+      <td class="col-id" th:text="${place.id}"></td>
+      <td th:text="${place.name}">Sala Ejemplo</td>
+      <td class="col-address" th:text="${place.address != null ? place.address : 'Sin dirección'}">Calle Ejemplo 123</td>
+      <td class="col-capacity" th:text="${place.capacity != null ? place.capacity : 'Sin especificar'}">500</td>
+      <td class="col-rating" th:text="${place.rating != null ? #numbers.formatDecimal(place.rating, 1, 1) + '/5' : 'Sin valorar'}">4.5/5</td>
+      <td class="col-owner" th:text="${place.user != null ? place.user.name : 'Sin propietario'}">Usuario Ejemplo</td>
+      <td class="table-actions">
+        <button class="btn-edit"><a class="btn-edit__link" th:href="@{'/places/' + ${place.id} + '/edit'}">Editar</a></button>
+        <button class="btn-delete"><a class="btn-delete__link" th:href="@{'/places/' + ${place.id} + '/delete'}">Eliminar</a></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="admin-actions">
+    <a th:href="@{/places/new}" class="btn-add">Añadir Sala</a>
+  </div>
+
+</div>
+</body>
+</html>

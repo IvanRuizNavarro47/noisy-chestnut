@@ -1,0 +1,334 @@
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #f1f1f1;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: rgba(11, 11, 15, 0.3);
+  transition: background-color 0.3s;
+  margin-bottom: 1rem;
+}
+.btn-back:hover {
+  background-color: rgba(11, 11, 15, 0.5);
+  color: #f1f1f1;
+}
+
+.concert-detail {
+  background-color: rgba(11, 11, 15, 0.8);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  color: #f1f1f1;
+  margin-bottom: 2rem;
+}
+
+.concert-header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+.concert-header__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.concert-header__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #f1f1f1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.concert-content {
+  padding: 2rem;
+}
+
+.concert-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.concert-info__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.concert-info__item .material-symbols-outlined {
+  color: #b3122d;
+  font-size: 1.2rem;
+}
+
+.concert-description {
+  margin-bottom: 2rem;
+}
+.concert-description h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f1f1f1;
+}
+.concert-description p {
+  line-height: 1.6;
+  color: #f1f1f1;
+}
+
+.concert-artists {
+  margin-bottom: 2rem;
+}
+.concert-artists h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f1f1f1;
+}
+.concert-artists__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.concert-artist__card {
+  display: flex;
+  background-color: rgba(11, 11, 15, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.concert-artist__image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.concert-artist__info {
+  padding: 1rem;
+  width: 100%;
+}
+.concert-artist__info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #f1f1f1;
+}
+.concert-artist__info p {
+  margin: 5px 0;
+  color: #f1f1f1;
+  line-height: 1.4;
+}
+.concert-artist__info a {
+  display: inline-block;
+  background-color: #b3122d;
+  color: #f1f1f1;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+.concert-artist__info a:hover {
+  background-color: #7a0c20;
+  color: #f1f1f1;
+}
+
+.concert-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.concert-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  border: none;
+  color: #f1f1f1;
+}
+.concert-actions__btn--buy {
+  background-color: #b3122d;
+}
+.concert-actions__btn--buy:hover {
+  background-color: #7a0c20;
+  color: #f1f1f1;
+}
+.concert-actions__btn--buy:disabled {
+  background-color: #2a2a33;
+  cursor: not-allowed;
+}
+.concert-actions__btn--attend {
+  background-color: transparent;
+  border: 1px solid #2a2a33;
+}
+.concert-actions__btn--attend:hover {
+  background-color: rgba(42, 42, 51, 0.1);
+}
+.concert-actions__btn--attend.active {
+  background-color: rgba(179, 18, 45, 0.3);
+  border-color: #b3122d;
+}
+.concert-actions__btn--share {
+  background-color: transparent;
+  border: 1px solid #2a2a33;
+}
+.concert-actions__btn--share:hover {
+  background-color: rgba(42, 42, 51, 0.1);
+}
+
+.concert-comments {
+  padding: 2rem;
+  background-color: rgba(11, 11, 15, 0.4);
+}
+.concert-comments h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+}
+.concert-comments form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.concert-comments form textarea {
+  flex-grow: 1;
+  background-color: rgba(42, 42, 51, 0.3);
+  border: 1px solid rgba(20, 20, 27, 0.5);
+  color: #f1f1f1;
+  padding: 0.8rem;
+  border-radius: 5px;
+  resize: vertical;
+  min-height: 80px;
+}
+.concert-comments form textarea::placeholder {
+  color: rgba(241, 241, 241, 0.5);
+}
+.concert-comments form textarea:focus {
+  background-color: rgba(42, 42, 51, 0.5);
+  border-color: #b3122d;
+  outline: none;
+}
+.concert-comments form button {
+  background-color: #b3122d;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.concert-comments form button:hover {
+  background-color: #7a0c20;
+}
+.concert-comments .comment-item {
+  margin-bottom: 1.5rem;
+}
+.concert-comments .comment-content {
+  display: flex;
+  gap: 1rem;
+  background-color: rgba(11, 11, 15, 0.6);
+  border-radius: 8px;
+  padding: 1rem;
+  align-items: flex-start;
+}
+.concert-comments .comment-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.concert-comments .comment-text {
+  flex-grow: 1;
+  text-align: left;
+}
+.concert-comments .comment-text .comment-username {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.concert-comments .comment-text .comment-username h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b3122d;
+  transition: color 0.3s;
+}
+.concert-comments .comment-text .comment-username:hover h4 {
+  color: #7a0c20;
+  text-decoration: underline;
+}
+.concert-comments .comment-text span {
+  font-size: 0.8rem;
+  color: #2a2a33;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.concert-comments .comment-text p {
+  line-height: 1.4;
+  color: #f1f1f1;
+  margin: 0;
+  text-align: left;
+}
+.concert-comments > div:last-child p {
+  text-align: center;
+  padding: 2rem;
+  color: #2a2a33;
+  font-style: italic;
+  margin: 0;
+}
+
+.login-message {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(11, 11, 15, 0.2);
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+.login-message a {
+  color: #b3122d;
+  text-decoration: none;
+}
+.login-message a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .concert-artists__grid {
+    grid-template-columns: 1fr;
+  }
+  .concert-artist__card {
+    flex-direction: column;
+  }
+  .concert-artist__image {
+    width: 100%;
+    height: 200px;
+  }
+}
+@media (max-width: 600px) {
+  .concert-actions {
+    flex-direction: column;
+  }
+  .concert-actions__btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .concert-comments form {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=concert-detail.css.map */

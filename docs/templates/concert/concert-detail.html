@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${concert.name}">Concierto</title>
+    <link rel="stylesheet" th:href="@{/css/concert-detail.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+<div layout:fragment="content" class="content">
+    <a href="/concert" class="btn-back">
+        <span class="material-symbols-outlined">arrow_back</span> Volver a conciertos
+    </a>
+
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <div class="concert-detail">
+        <!-- Header del concierto -->
+        <div class="concert-header">
+            <img th:src="${concert.imageUrl}" th:alt="${concert.name}" class="concert-header__image">
+            <h1 class="concert-header__title" th:text="${concert.name}">Concierto</h1>
+        </div>
+
+        <div class="concert-content">
+            <!-- Info básica -->
+            <div class="concert-info">
+                <div class="concert-info__item">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span th:text="${#temporals.format(concert.date, 'dd/MM/yyyy HH:mm')}">Fecha</span>
+                </div>
+                <div class="concert-info__item" th:if="${concert.place}">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <span th:text="${concert.place.name + ', ' + concert.place.address}">Lugar</span>
+                </div>
+                <div class="concert-info__item">
+                    <span class="material-symbols-outlined">music_note</span>
+                    <span th:text="${concert.musicGenre}">Género</span>
+                </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="concert-description">
+                <h2>Descripción</h2>
+                <p th:text="${concert.description}">Descripción</p>
+            </div>
+
+            <!-- Artistas -->
+            <div class="concert-artists" th:if="${!#lists.isEmpty(artists)}">
+                <h2 th:text="${#lists.size(artists) == 1 ? 'Artista' : 'Artistas'}">Artistas</h2>
+                <div class="concert-artists__grid">
+                    <div class="concert-artist__card" th:each="artist : ${artists}">
+                        <img class="user-card__image"
+                             th:if="${artist.imageUrl != null and !#strings.isEmpty(artist.imageUrl)}"
+                             th:src="@{${artist.imageUrl}}"
+                             alt="Profile Image" />
+
+                        <img class="user-card__image"
+                             th:unless="${artist.imageUrl != null and !#strings.isEmpty(artist.imageUrl)}"
+                             th:src="@{'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'}"
+                             alt="Default Image" />
+                        <div class="concert-artist__info">
+                            <h3 th:text="${artist.name}">Artista</h3>
+                            <p th:text="${artist.musicGenre}">Género</p>
+                            <p th:text="${artist.description}">Bio</p>
+                            <a th:href="@{/users/{id}/profile(id=${artist.id})}">Ver perfil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="concert-actions">
+                <!-- Entradas -->
+                <div th:if="${!#lists.isEmpty(salePoints)}">
+                    <a th:each="salePoint : ${salePoints}"
+                       th:href="${salePoint.salePointUrl}"
+                       target="_blank"
+                       class="concert-actions__btn concert-actions__btn--buy">
+                        <span class="material-symbols-outlined">local_activity</span>
+                        <span th:text="'Comprar (' + ${salePoint.ticketPrice} + '€)'">Comprar</span>
+                    </a>
+                </div>
+                <div th:if="${#lists.isEmpty(salePoints)}">
+                    <button class="concert-actions__btn concert-actions__btn--buy" disabled>
+                        <span class="material-symbols-outlined">local_activity</span> No disponible
+                    </button>
+                </div>
+
+                <!-- Botón Asistiré -->
+                <div th:if="${#authorization.expression('isAuthenticated()')}">
+                    <button class="concert-actions__btn concert-actions__btn--attend"
+                            id="attendButton"
+                            th:data-concert-id="${concertId}"
+                            th:classappend="${isAttending} ? 'active' : ''">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <span th:text="${isAttending} ? 'Ya asistiré' : 'Asistiré'">Asistiré</span>
+                        <span th:text="${attendanceCount}">0</span>
+                    </button>
+                </div>
+                <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                    <a href="/users/login" class="concert-actions__btn concert-actions__btn--attend">
+                        <span class="material-symbols-outlined">event_available</span>
+                        Inicia sesión para asistir
+                    </a>
+                </div>
+
+                <!-- Compartir -->
+                <button class="concert-actions__btn concert-actions__btn--share" onclick="shareConcierto()">
+                    <span class="material-symbols-outlined">share</span> Compartir
+                </button>
+            </div>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="concert-comments">
+            <h2>Comentarios</h2>
+
+            <!-- Formulario -->
+            <div th:if="${#authorization.expression('isAuthenticated()')}">
+                <form method="post" th:action="@{'/concert/' + ${concert.id} + '/comment'}">
+                    <textarea name="content" placeholder="Escribe un comentario..." required></textarea>
+                    <button type="submit">Comentar</button>
+                </form>
+            </div>
+            <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                <p><a href="/users/login">Inicia sesión</a> para comentar</p>
+            </div>
+
+            <!-- Lista de comentarios -->
+            <div th:if="${!#lists.isEmpty(comments)}">
+                <div th:each="comment : ${comments}" class="comment-item">
+                    <div class="comment-content">
+                        <img th:src="${comment.user.imageUrl}" alt="Avatar" class="comment-avatar">
+                        <div class="comment-text">
+                            <a th:href="@{/users/{id}/profile(id=${comment.user.id})}" class="comment-username">
+                                <h4 th:text="${comment.user.name}">Usuario</h4>
+                            </a>
+                            <span th:text="${#temporals.format(comment.date, 'dd/MM/yyyy HH:mm')}">Fecha</span>
+                            <p th:text="${comment.content}">Comentario</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(comments)}">
+                <p>Sé el primero en comentar 🎸</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Botón asistiré
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('attendButton');
+            if (!btn) return;
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/concert/' + btn.getAttribute('data-concert-id') + '/attend';
+                form.style.display = 'none';
+                document.body.appendChild(form);
+                form.submit();
+            });
+        });
+
+        // Compartir
+        function shareConcierto() {
+            const title = /*[[${concert.name}]]*/ 'Concierto';
+            const url = window.location.href;
+            const text = `🎸 ¡Ven al ${title}! ${url}`;
+
+            if (navigator.share) {
+                navigator.share({title, url});
+            } else {
+                navigator.clipboard.writeText(text);
+                alert('¡Enlace copiado!');
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

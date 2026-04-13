@@ -1,0 +1,114 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  min-width: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #0b0b0f;
+  color: #f1f1f1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+}
+.login-card__header {
+  background-color: #b3122d;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.login-card__body {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login-card__field label {
+  font-size: 0.95rem;
+  color: #f1f1f1;
+}
+.login-card__input {
+  padding: 1rem;
+  margin: 1rem;
+  max-width: 100%;
+  border-radius: 6px;
+  background-color: #2a2a33;
+  color: #f1f1f1;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.login-card__input::placeholder {
+  color: #f1f1f1;
+}
+.login-card__input:focus {
+  outline: none;
+  border: 1px solid #2a2a33;
+  box-shadow: 0 0 0 3px #7a0c20;
+}
+.login-card__button {
+  width: 100%;
+  background-color: #b3122d;
+  color: #f1f1f1;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.login-card__button:hover {
+  background-color: #7a0c20;
+}
+.login-card__register {
+  text-align: center;
+  margin-top: 10px;
+}
+.login-card__register a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.login-card__register a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .login-card {
+    max-width: 90%;
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 95%;
+    font-size: 14px;
+  }
+  .login-card__body {
+    padding: 20px;
+  }
+  .login-card__header {
+    font-size: 1.1rem;
+  }
+  .login-card__input, .login-card__button {
+    font-size: 0.95rem;
+  }
+  .content {
+    padding: 20px 10px;
+  }
+}
+
+/*# sourceMappingURL=login.css.map */

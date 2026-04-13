@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interacción Social</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/social.css}"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+</head>
+<body>
+      <div class="content" layout:fragment="content">
+          <div class="buttons-container">
+              <button class="buttons-container__button" onclick="selectTab('groupsTab', 'chats-tab')">
+                  <i class="fas fa-comments"></i>
+                  Grupos
+              </button>
+              <!--Botón para crear chat-->
+              <button class="buttons-container__button" onclick="selectTab('usersTab', 'chats-tab')">
+                  <i class="fas fa-comments"></i>
+                  Usuarios
+              </button>
+
+          </div>
+          <div class="chats-tab chats-tab--users" id="usersTab">
+              <!--              Botón para abrir chat-->
+              <button class="buttons-container__button" id="createChatButton" data-content="chats-tab" onclick="openModal('chatModal')">
+                  <i class="fas fa-plus"></i> Crear nuevo chat
+              </button>
+<!--              Modal del chat-->
+
+              <div class="modal" id="chatModal">
+                  <div class="modal__content">
+                      <div class="modal__header">
+                          <h2 class="modal__title">Crear nuevo chat</h2>
+                          <i class="fa-solid fa-xmark fa-lg" style="color: #ffffff;" onclick="openModal('chatModal')"></i>
+                      </div>
+                      <div class="modal__body">
+                            <div class="modal__search">
+                                <label for="userChatSearch" class="modal__label">Añadir personas:</label>
+                                <input type="text" id="userChatSearch" class="modal__input" placeholder="Buscar personas..."  onkeyup="searchInput('chatList', 'userChatSearch')"/>
+                                <ul id="chatList">
+                                    <li th:each="user : ${users}" th:id="${user.getUsername()}">
+                                        <p th:text="${user.getUsername()}">
+                                        </p>
+                                        <form method="post" th:action="@{'/chat/user/' + ${user.getId()}}">
+                                            <button class="user-list__button">
+                                                Crear chat
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div th:each="userChat : ${userChats}" class="chats-tab__item">
+                  <div th:if="${user.getId() != #authentication.getPrincipal().getId()}" th:each="user : ${userChat.getUsers()}">
+                      <img class="chats-tab__image" th:src="${user.getImageUrl()}" alt="Chat Image"/>
+                      <a class="chats-tab__link" th:href="@{'/chat/' + ${userChat.getId()}}">
+                          <h2 class="chats-tab__title" th:text="${user.getUsername()}">
+                          </h2>
+                      </a>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="chats-tab chats-tab--groups" id="groupsTab">
+              <!-- Botón para crear grupo -->
+                  <button class="buttons-container__button" id="createGroupButton" data-content="groupsTab" onclick="openModal('groupModal')">
+                      <i class="fas fa-plus"></i> Crear grupo
+                  </button>
+
+              <!-- Modal -->
+              <div class="modal" id="groupModal">
+                  <div class="modal__content">
+                      <div class="modal__header">
+                          <h2 class="modal__title">Crear nuevo grupo</h2>
+                          <i class="fa-solid fa-xmark fa-lg" style="color: #ffffff;" onclick="openModal('groupModal')"></i>
+                      </div>
+                      <div class="modal__body">
+                          <form action="/chat/group" method="post" th:object="${newGroup}">
+                              <div class="modal__name">
+                                  <label for="groupName" class="modal__label">Nombre del grupo:</label>
+                                  <input type="text" name="groupName" id="groupName" class="modal__input" placeholder="Escribe el nombre del grupo" />
+                              </div>
+                              <div class="confirmGroupButton">
+                                  <button type="submit" class="buttons-container__button" id="confirmCreateGroup">Crear grupo</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+
+              <div th:each="groupChat : ${groupChats}" class="chats-tab__item">
+                  <a class="chats-tab__link" th:href="@{'/chat/' + ${groupChat.getId()}}">
+                      <h2 class="chats-tab__title" th:text="${groupChat.getGroupName()}">
+                      </h2>
+                  </a>
+                  <a class="chats-tab__add-user" th:href="@{'/chat/group/' + ${groupChat.getId()}}">
+                      Añadir usuarios
+                  </a>
+              </div>
+          </div>
+      </div>
+</body>
+</html>

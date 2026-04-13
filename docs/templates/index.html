@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+   <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+<body>
+        <div class="content" layout:fragment="content">
+            <!-- Publicación 1 -->
+            <div class="pub-card" th:each="publication : ${publications}">
+                <div class="pub-card__header">
+                    <img th:src="${publication.getUser().getImageUrl() != null ? publication.getUser().getImageUrl() : 'https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'}"
+                         class="pub-card__user-image" alt="">
+                    <div class="pub-card__username" th:text="${publication.getUser().getName()}"></div>
+                </div>
+                <div class="pub-card__body">
+                    <p class="pub-card__title" th:text="${publication.getTitle()}"></p>
+                    <p class="pub-card__description" th:text="${publication.getDescription()}"></p>
+                </div>
+                <div class="pub-card__footer">
+                    <p class="pub-card__date" th:text="${#temporals.format(publication.getDate(), 'dd/MM/yyyy HH:mm')}"></p>
+                    <a class="pub-card__link" th:href="@{'/publication/'+${publication.getId()}}">Ver más</a>
+                </div>
+            </div>
+        </div>
+    <!-- Enlace a los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+</body>
+</html>

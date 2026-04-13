@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/ConcertsAdmin.css}" />
+</head>
+<body>
+<div class="content" layout:fragment="content">
+
+    <h2 class="admin-title">Gestión de Conciertos</h2>
+
+    <table class="admin-table concert-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Artistas</th>
+            <th>Ubicación</th>
+            <th>Fecha</th>
+            <th>Género Musical</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="concert : ${concerts}">
+            <td th:text="${concert.getId()}"></td>
+            <td th:text="${concert.getName()}">Concierto de Melendi</td>
+            <td>
+                <span th:if="${concert.users != null and !#lists.isEmpty(concert.users)}">
+                    <span th:each="artist, iterStat : ${concert.users}"
+                          th:text="${artist.name + (iterStat.last ? '' : ', ')}"></span>
+                </span>
+                <span th:if="${concert.users == null or #lists.isEmpty(concert.users)}"
+                      class="no-artists">Sin artistas</span>
+            </td>
+            <td th:text="${concert.getPlace() != null ? concert.getPlace().getName() : 'Sin lugar'}">Sevilla</td>
+            <td th:text="${#temporals.format(concert.getDate(), 'dd/MM/yyyy HH:mm')}">25/03/2022 20:00</td>
+            <td th:text="${concert.getMusicGenre() != null ? concert.getMusicGenre() : 'Sin género'}">Rock</td>
+            <td class="table-actions">
+                <button class="btn-edit"><a class="btn-edit__link" th:href="@{'/concert/' + ${concert.getId()} + '/edit'}">Editar</a></button>
+                <button class="btn-delete"><a class="btn-delete__link" th:href="@{'/concert/' + ${concert.getId()} + '/delete'}">Eliminar</a></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="admin-actions">
+        <a th:href="@{/concert/new}" class="btn-add">Añadir Concierto</a>
+    </div>
+
+</div>
+</body>
+</html>

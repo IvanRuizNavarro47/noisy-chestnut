@@ -1,0 +1,125 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 25%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #0b0b0f;
+  color: #f1f1f1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+}
+.register-card__header {
+  background-color: #b3122d;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.register-card__body {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.register-card__field {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.register-card__field label {
+  font-size: 0.95rem;
+  color: #f1f1f1;
+}
+.register-card__field input {
+  padding: 10px 12px;
+  border: none;
+  margin-top: 1rem;
+  border-radius: 6px;
+  background-color: #2a2a33;
+  color: #f1f1f1;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.register-card__field input::placeholder {
+  color: #f1f1f1;
+}
+.register-card__field input:focus {
+  outline: none;
+  border: 1px solid #2a2a33;
+  box-shadow: 0 0 0 3px #7a0c20;
+}
+.register-card__button {
+  width: 100%;
+  margin-top: 25px;
+  background-color: #b3122d;
+  color: #f1f1f1;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.register-card__button:hover {
+  background-color: #7a0c20;
+}
+.register-card__login {
+  text-align: center;
+  margin-top: 20px;
+}
+.register-card__login a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.register-card__login a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 992px) {
+  .register-card {
+    max-width: 60%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .register-card {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+  .register-card__body {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+  .register-card__field {
+    margin-top: 15px;
+  }
+  .register-card__field label {
+    font-size: 0.9rem;
+  }
+  .register-card__field input {
+    font-size: 0.95rem;
+  }
+  .register-card__button {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+  .register-card__login {
+    margin-top: 15px;
+  }
+  .register-card__login a {
+    font-size: 0.9rem;
+  }
+}
+
+/*# sourceMappingURL=register.css.map */

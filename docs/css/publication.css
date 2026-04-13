@@ -1,0 +1,127 @@
+.publication-layout {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.post {
+  width: 90%;
+  max-width: 50rem;
+  background: linear-gradient(180deg, #14141b 0%, #0b0b0f 100%);
+  border-radius: 14px;
+  border: 1px solid #2a2a33;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+.post__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.post__author {
+  color: #f1f1f1;
+}
+.post__title {
+  font-weight: bold;
+  color: #f1f1f1;
+  margin-bottom: 0.2rem;
+}
+.post__handle {
+  color: #f1f1f1;
+  font-weight: normal;
+}
+.post__text {
+  color: #f1f1f1;
+  margin: 10px 0;
+}
+.post__image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #2a2a33;
+  display: block;
+}
+.post__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+@media (max-width: 767px) {
+  .post__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.button {
+  background-color: #b3122d;
+  color: #f1f1f1;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.button:hover {
+  background-color: #b3122d;
+  opacity: 0.85;
+}
+.button--comment {
+  width: 100%;
+  margin-top: 10px;
+}
+.button a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.comments {
+  width: 100%;
+  background-color: #0b0b0f;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(12, 12, 0, 0.4);
+}
+.comments__title {
+  margin-bottom: 10px;
+  color: #f1f1f1;
+}
+.comments__comment {
+  background-color: #0b0b0f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #f1f1f1;
+}
+.comments__new {
+  margin-top: 15px;
+}
+.comments__textarea {
+  width: 100%;
+  background-color: #333333;
+  color: #FFFAF0;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  resize: vertical;
+}
+
+@media only screen and (max-width: 992px) {
+  .publication-layout {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .publication-layout {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=publication.css.map */

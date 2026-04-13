@@ -1,0 +1,204 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.post-form {
+  width: 100%;
+  max-width: 600px;
+  background-color: #0b0b0f;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.post-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.post-form__group--center {
+  align-items: center;
+}
+.post-form__label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+.post-form__input, .post-form__textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2a2a33;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+.post-form__input::placeholder, .post-form__textarea::placeholder {
+  color: #14141b;
+}
+.post-form__input:focus, .post-form__textarea:focus {
+  outline: none;
+  border: 1px solid #b3122d;
+  box-shadow: 0 0 0 3px #7a0c20;
+}
+.post-form__button {
+  background-color: #b3122d;
+  color: #f1f1f1;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.post-form__button:hover {
+  background-color: #7a0c20;
+}
+
+@media screen and (max-width: 992px) {
+  .post-form {
+    max-width: 80%;
+    padding: 25px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .post-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .post-form__label {
+    font-size: 0.95rem;
+  }
+  .post-form__input, .post-form__textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+  .post-form__button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+.publication-form {
+  width: 50%;
+  background-color: #0b0b0f;
+  padding: 2rem;
+  color: #f1f1f1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.publication-form__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.publication-form__label {
+  font-size: large;
+  font-weight: 600;
+}
+.publication-form__input {
+  padding: 0.5rem 1rem;
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  background-color: rgba(42, 42, 51, 0.8);
+  color: #f1f1f1;
+}
+.publication-form__input:focus {
+  border: 3px solid #7a0c20;
+  outline: none;
+}
+.publication-form__input[type=file] {
+  height: auto;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+.publication-form__textarea {
+  padding: 0.6rem 1rem;
+  min-height: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  background-color: rgba(42, 42, 51, 0.8);
+  color: #f1f1f1;
+  max-width: 100%;
+  min-width: 100%;
+  font-size: small;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+}
+.publication-form__textarea:focus {
+  border: 3px solid #7a0c20;
+  outline: none;
+}
+.publication-form__number {
+  padding: 0.5rem 1rem;
+  border: none;
+  height: 2.5rem;
+  background-color: rgba(42, 42, 51, 0.8);
+  color: #f1f1f1;
+  appearance: textfield;
+  width: 100%;
+  text-align: center;
+}
+.publication-form__number-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.publication-form__number-button {
+  outline: none;
+  background-color: rgba(42, 42, 51, 0.8);
+  border: none;
+  height: 2.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  color: #f1f1f1;
+}
+.publication-form__number-button:after {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f077";
+  transform: translate(-50%, -50%) rotate(180deg);
+  left: 50%;
+  top: 50%;
+}
+.publication-form__number-button--minus {
+  border-radius: 1.25rem 0 0 1.25rem;
+}
+.publication-form__number-button--plus {
+  border-radius: 0 1.25rem 1.25rem 0;
+}
+.publication-form__number-button--plus:after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.publication-form__button {
+  padding: 0.5rem;
+  background-color: #b3122d;
+  border: none;
+  border-radius: 10px;
+  color: #f1f1f1;
+  transition: background-color 0.15s linear;
+}
+.publication-form__button:hover {
+  background-color: #7a0c20;
+}
+.publication-form .current-image img, .publication-form .image-preview img {
+  border: 2px solid rgba(42, 42, 51, 0.3);
+  transition: border-color 0.2s ease;
+}
+.publication-form .current-image img:hover, .publication-form .image-preview img:hover {
+  border-color: #7a0c20;
+}
+
+/*# sourceMappingURL=new-publication.css.map */

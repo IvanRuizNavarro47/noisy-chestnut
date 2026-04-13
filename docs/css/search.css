@@ -1,0 +1,219 @@
+.content {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "search" "tabs" "content";
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.search-container {
+  grid-area: search;
+  justify-content: center;
+}
+.search-container .search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.search-container .search-form input[type=text] {
+  padding: 0.5rem;
+  border: 1px solid #0b0b0f;
+  border-radius: 5px;
+}
+.search-container .search-form select {
+  padding: 0.5rem;
+  border: 1px solid #0b0b0f;
+  border-radius: 5px;
+}
+.search-container .search-form button {
+  padding: 0.5rem 1rem;
+  background-color: #b3122d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.search-container .search-form button:hover {
+  background-color: rgb(132.6598984772, 13.3401015228, 33.3502538071);
+}
+
+.tabs-menu {
+  grid-area: tabs;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  min-height: 3rem;
+  justify-self: center;
+  padding-top: 0.5rem;
+  border-bottom: solid 2px #0b0b0f;
+}
+.tabs-menu__item {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.25s ease-in;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+.tabs-menu__item--concerts {
+  border-left: solid 2px #0b0b0f;
+  border-right: solid 2px #0b0b0f;
+}
+.tabs-menu__item--artists {
+  border-right: solid 2px #0b0b0f;
+}
+.tabs-menu__item:hover {
+  background-color: #b3122d;
+  transform: scale(1.2, 1.2);
+  border: 0 transparent;
+  border-radius: 5px;
+}
+.tabs-menu .active {
+  background-color: rgba(179, 18, 45, 0.8);
+}
+.tabs-menu .active:hover {
+  background-color: #b3122d;
+  transform: scale(1.2, 1.2);
+  border: 0;
+  border-radius: 5px;
+}
+
+.search-content {
+  grid-area: content;
+  padding: 1rem;
+}
+.search-content > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+.search-content > div::-webkit-scrollbar {
+  height: 6px;
+}
+.search-content > div::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.search-content--artists, .search-content--concerts, .search-content--places {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.user-card,
+.concert-card,
+.place-card {
+  width: 12rem;
+  height: 18rem;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: #0b0b0f;
+  color: white;
+  flex-direction: column;
+  text-align: center;
+}
+.user-card__image,
+.concert-card__image,
+.place-card__image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  align-content: center;
+}
+.user-card__title,
+.concert-card__title,
+.place-card__title {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+.user-card__description,
+.concert-card__description,
+.place-card__description {
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+}
+.user-card__link,
+.concert-card__link,
+.place-card__link {
+  text-decoration: none;
+  color: #f1f1f1;
+}
+.user-card__link:hover,
+.concert-card__link:hover,
+.place-card__link:hover {
+  text-decoration: underline;
+}
+
+.user-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.user-card__username {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+.user-card__button {
+  gap: 1px;
+  padding: 0.5rem;
+  background-color: #b3122d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.user-card__button:hover {
+  background-color: rgb(132.6598984772, 13.3401015228, 33.3502538071);
+}
+
+.concert-card__content {
+  padding: 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.concert-card__content__desciption {
+  margin-bottom: 0.5rem;
+}
+
+.place-card__content {
+  padding: 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 0.5rem;
+    grid-template-rows: auto auto 1fr;
+  }
+  .tabs-menu {
+    max-width: 90%;
+    height: max-content;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .tabs-menu::-webkit-scrollbar {
+    width: 0;
+  }
+  .search-content > div {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+}
+
+/*# sourceMappingURL=search.css.map */

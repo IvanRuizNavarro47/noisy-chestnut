@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main_layout.html}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Conciertos</title>
+    <link rel="stylesheet" th:href="@{/css/places.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+<div layout:fragment="content" class="content">
+    <div class="place-card" th:each="place : ${places}">
+        <img class="place-card__image" th:src="${place.getImageUrl()}" alt="placeImage">
+        <div class="place-card__content">
+            <h2 class="place-card__title" th:text="${place.getName()}">
+            </h2>
+            <a th:href="@{'/places/' + ${place.getId()}}" class="place-card__link">
+                Conocer más
+                <span class="material-symbols-outlined">
+                    arrow_right_alt
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
